@@ -11,12 +11,14 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator animator;
+    private SpriteRenderer spriteRenderer;
     private bool isGrounded;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -74,5 +76,8 @@ public class Player : MonoBehaviour
                 animator.Play("Player_Fall");
             }
         }
+
+        //Account for horizontal direction of movement
+        spriteRenderer.flipX = rb.linearVelocity.x < 0f;
     }
 }
