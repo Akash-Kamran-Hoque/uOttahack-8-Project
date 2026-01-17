@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
+        //Always intializes to 1 double jump when starting game
         extraJumpsValue = 1;
         extraJumps = extraJumpsValue;
     }
