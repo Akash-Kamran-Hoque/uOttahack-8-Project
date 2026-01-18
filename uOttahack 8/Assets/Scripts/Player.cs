@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections; // Needed for IEnumerator and Coroutines
-
+using UnityEngine.UI;//For UI
 
 public class Player : MonoBehaviour
 {
@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
+
+    public Image healthImage;
+    private Color healthClr;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -29,6 +32,9 @@ public class Player : MonoBehaviour
         //Always intializes to 1 double jump when starting game
         extraJumpsValue = 1;
         extraJumps = extraJumpsValue;
+
+        //Health bar stuff
+        healthClr = healthImage.color;
     }
 
     // Update is called once per frame
@@ -61,6 +67,9 @@ public class Player : MonoBehaviour
 
         //Updating the animation state
         SetAnimation(moveInput);
+
+        //Updating health
+        healthImage.fillAmount = health/100f;
     }
 
     //Assuring that the player is on the ground
@@ -131,8 +140,10 @@ public class Player : MonoBehaviour
     {
         takingDamage = true;
         spriteRenderer.color = Color.red;
+        healthImage.color = Color.red;
         yield return new WaitForSeconds(0.1f);
         takingDamage = false;
+        healthImage.color = healthClr;
         spriteRenderer.color = Color.white;
     }
 
