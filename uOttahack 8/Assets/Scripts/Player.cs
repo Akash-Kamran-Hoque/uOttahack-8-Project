@@ -1,10 +1,13 @@
 using UnityEngine;
 using System.Collections; // Needed for IEnumerator and Coroutines
 using UnityEngine.UI;//For UI
+using TMPro; //For text
 
 public class Player : MonoBehaviour
 {
 
+    public int coins;
+    public TextMeshProUGUI coinCounterText;
     public int health = 100;
     public float movementSpeed = 5f;
     public float jumpForce = 10f;
