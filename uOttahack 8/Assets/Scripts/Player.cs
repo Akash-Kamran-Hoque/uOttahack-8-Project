@@ -119,6 +119,9 @@ public class Player : MonoBehaviour
                 Die();
             }
 
+        } else if (collision.gameObject.tag == "Void")
+        {
+            Die();
         }
     }
 
