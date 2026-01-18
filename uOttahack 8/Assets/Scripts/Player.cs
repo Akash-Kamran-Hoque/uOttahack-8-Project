@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     private bool isGrounded;
     public int extraJumpsValue;
     private int extraJumps;
+    private bool takingDamage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -106,7 +107,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Damage")
+        if(!takingDamage && collision.gameObject.tag == "Damage")
         {
             health -= 25;
             //Knockback effect
@@ -125,8 +126,10 @@ public class Player : MonoBehaviour
     //Must use StartCoroutine() function to invoke
     private IEnumerator BlinkRed()
     {
+        takingDamage = true;
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(0.1f);
+        takingDamage = false;
         spriteRenderer.color = Color.white;
     }
 
