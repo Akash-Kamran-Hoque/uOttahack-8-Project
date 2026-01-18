@@ -1,4 +1,4 @@
-# uOttahack-8-Project
+# 2D Platformer
 This repository is where the submission for the uOttahack 8 event is located.
 
 Team Members:
