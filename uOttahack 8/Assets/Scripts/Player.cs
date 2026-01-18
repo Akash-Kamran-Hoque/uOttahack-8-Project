@@ -111,7 +111,7 @@ public class Player : MonoBehaviour
         {
             health -= 25;
             //Knockback effect
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce /2 );
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce/2 );
             StartCoroutine(BlinkRed());
 
             if(health <= 0)
