@@ -1,8 +1,11 @@
 using UnityEngine;
+using System.Collections; // Needed for IEnumerator and Coroutines
+
 
 public class Player : MonoBehaviour
 {
 
+    public int health = 100;
     public float movementSpeed = 5f;
     public float jumpForce = 10f;
     public Transform groundCheck;
@@ -99,5 +102,37 @@ public class Player : MonoBehaviour
 
         //Account for horizontal direction of movement
         spriteRenderer.flipX = rb.linearVelocity.x < 0f;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Damage")
+        {
+            health -= 25;
+            //Knockback effect
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            StartCoroutine(BlinkRed());
+
+            if(health <= 0)
+            {
+                Die();
+            }
+
+        }
+    }
+
+    //Coroutine (thread) that will run when damaged
+    //Must use StartCoroutine() function to invoke
+    private IEnumerator BlinkRed()
+    {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.color = Color.white;
+    }
+
+    private void Die()
+    {
+        //Reloads the level from scratch
+        UnityEngine.SceneManagement.SceneManager.LoadScene("FirstLevel");
     }
 }
