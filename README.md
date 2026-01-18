@@ -11,4 +11,7 @@ Assets
 Ground and Spikes: "2D Pixel Art Platformer | Biome - Plains" by Superposition Principle
 Link: https://assetstore.unity.com/packages/2d/environments/2d-pixel-art-platformer-biome-plains-255002
 
-Player, Enemies, Coins, and Flagpole Sprites: 
+Player, Enemies, Coins, and Flagpole Sprites: "Free Platform Game Assets" by Bayat Games
+Link: https://assetstore.unity.com/packages/2d/environments/free-platform-game-assets-85838
+
+
